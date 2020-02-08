@@ -55,6 +55,12 @@
             <AppenderRef ref="CONSOLE" />
             <AppenderRef ref="runtimeFile" />
         </root>
+
+        <logger name="com.zimug.bootlaunch" level="DEBUG" additivity="false">
+            <AppenderRef ref="CONSOLE" />
+            <AppenderRef ref="runtimeFile" />
+        </logger>
+
     </Loggers>
 
 </configuration>

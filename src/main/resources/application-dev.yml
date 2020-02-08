@@ -12,5 +12,12 @@ spring:
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
+  quartz:
+    job-store-type: jdbc
+    jdbc:
+      initialize-schema: never #自动化初始表结构
+      #quartz的数据表在：quartz-2.3.0.jar!\org\quartz\impl\jdbcjobstore\tables_mysql_innodb.sql
+
+
 logging:
   config: classpath:log4j2-dev.xml

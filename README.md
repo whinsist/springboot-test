@@ -16,3 +16,10 @@ java -jar springboot-test-0.0.1-SNAPSHOT.jar  --spring.profiles.active=dev
       RolloverSrategy：日志清理策略。通常是指日志保留事件
       异步日志：单独开一个线程做日志的写操作，达到不阻塞主线程的目的
 
+3、整合log4j2
+    取消springboot自带日志
+    启动项目时出现包StaticLoggerBinder冲突：
+    SLF4J: Class path contains multiple SLF4J bindings.
+    SLF4J: Found binding in [jar:file:/C:/repository/org/apache/logging/log4j/log4j-slf4j-impl/2.10.0/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+    SLF4J: Found binding in [jar:file:/C:/repository/org/slf4j/slf4j-log4j12/1.7.25/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+    因此就要取消slf4j-log4j12-1.7.25.jar

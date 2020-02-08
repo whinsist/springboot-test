@@ -3,3 +3,5 @@ server:
   servlet:
     context-path: /test
 
+logging:
+    config: classpath:log4j2-prod.xml

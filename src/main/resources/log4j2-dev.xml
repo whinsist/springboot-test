@@ -45,9 +45,12 @@
     </Appenders>
 
     <Loggers>
-        <logger name="com.zimug.bootlaunch.config.accesslog.AccessLogInterceptor" level="info" additivity="false">
+
+        <!--additivity:flase 不会给root处理-->
+        <logger name="com.zimug.bootlaunch.config.accesslog.AccessLogInterceptor" level="info" additivity="flase">
             <AppenderRef ref="accessLog" />
         </logger>
+
         <root level="info">
             <AppenderRef ref="CONSOLE" />
             <AppenderRef ref="runtimeFile" />

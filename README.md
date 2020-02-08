@@ -23,3 +23,8 @@ java -jar springboot-test-0.0.1-SNAPSHOT.jar  --spring.profiles.active=dev
     SLF4J: Found binding in [jar:file:/C:/repository/org/apache/logging/log4j/log4j-slf4j-impl/2.10.0/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
     SLF4J: Found binding in [jar:file:/C:/repository/org/slf4j/slf4j-log4j12/1.7.25/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
     因此就要取消slf4j-log4j12-1.7.25.jar
+    
+    
+4、拦截器实现统一日志访问
+    拦截器：拦截controller进入退出
+    自定义logger 及logger-ref    

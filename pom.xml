@@ -134,11 +134,18 @@
 				</configuration>
 			</plugin>
 
-			<!--打成jar时，设定manifest的参数，比如指定运行的Main class，还有依赖的jar包，加入classpath中-->
-			<plugin>
+			<!--打成jar时，设定manifest的参数，比如指定运行的Main class，还有依赖的jar包，加入classpath中 springboot不能指定版本不然java -jar方式运行不起-->
+			<!--<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>${maven.jar.plugin.version}</version>
+			</plugin>-->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<fork>true</fork>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

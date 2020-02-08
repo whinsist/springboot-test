@@ -1,18 +1,5 @@
 server:
   port: 8086
   servlet:
-    context-path: /dev
-
-gril:
-  cupSize: C
-  name: 王梦里-dev
-  age: 20
-spring:
-  data:
-    mongodb:
-      host: localvm
-      port: 27017
-      username: rightcloud
-      password: H89lBgAg
-      database: rightcloud
+    context-path: /test
 

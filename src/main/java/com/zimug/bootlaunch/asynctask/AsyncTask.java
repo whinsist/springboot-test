@@ -10,17 +10,17 @@ public class AsyncTask {
     @Autowired
     private TaskService taskService;
 
-    @Async
+    @Async("taskExecutor")
     public void doTaskOne() throws Exception {
         taskService.doTaskOne();
     }
 
-    @Async
+    @Async("taskExecutor")
     public void doTaskTwo() throws Exception {
         taskService.doTaskTwo();
     }
 
-    @Async
+    @Async("taskExecutor")
     public void doTaskThree() throws Exception {
         taskService.doTaskThree();
     }

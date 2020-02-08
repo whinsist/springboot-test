@@ -27,4 +27,9 @@ java -jar springboot-test-0.0.1-SNAPSHOT.jar  --spring.profiles.active=dev
     
 4、拦截器实现统一日志访问
     拦截器作用：拦截controller进入退出
-    自定义logger 及logger-ref    
+    自定义logger 及logger-ref   
+    
+5、使用线程池
+    避免系统资源耗尽， 省去创建线程和销毁线程的时间 
+    异步任务在执行中 系统需要停止，如何优雅的关闭线程池
+    

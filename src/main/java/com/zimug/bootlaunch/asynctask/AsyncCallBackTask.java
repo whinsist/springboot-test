@@ -13,21 +13,21 @@ public class AsyncCallBackTask {
     @Autowired
     private TaskService taskService;
 
-    @Async
+    @Async("taskExecutor")
     public Future<String> doTaskOneCallback() throws Exception {
         taskService.doTaskOne();
         System.out.println("任务一，当前线程：" + Thread.currentThread().getName());
         return new AsyncResult<>("任务一完成");
     }
 
-    @Async
+    @Async("taskExecutor")
     public Future<String> doTaskTwoCallback() throws Exception {
         taskService.doTaskTwo();
         System.out.println("任务二，当前线程：" + Thread.currentThread().getName());
         return new AsyncResult<>("任务二完成");
     }
 
-    @Async
+    @Async("taskExecutor")
     public Future<String> doTaskThreeCallback() throws Exception {
         taskService.doTaskThree();
         System.out.println("任务三，当前线程：" + Thread.currentThread().getName());

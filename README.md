@@ -26,5 +26,5 @@ java -jar springboot-test-0.0.1-SNAPSHOT.jar  --spring.profiles.active=dev
     
     
 4、拦截器实现统一日志访问
-    拦截器：拦截controller进入退出
+    拦截器作用：拦截controller进入退出
     自定义logger 及logger-ref    

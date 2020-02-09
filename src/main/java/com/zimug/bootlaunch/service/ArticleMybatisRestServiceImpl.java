@@ -45,7 +45,11 @@ public class ArticleMybatisRestServiceImpl implements ArticleRestService{
 
     @Override
     public ArticleVO getArticle(Long id) {
-        return dozerMapper.map(articleMapper.selectByPrimaryKey(id),ArticleVO.class);
+        Article article = articleMapper.selectByPrimaryKey(id);
+        if (article == null) {
+            return null;
+        }
+        return dozerMapper.map(article, ArticleVO.class);
     }
 
     @Override

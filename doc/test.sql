@@ -8,3 +8,6 @@ CREATE TABLE `article`  (
 
   PRIMARY KEY (`id`) USING BTREE
 );
+
+
+#初始化qutarz数据表：quartz-2.3.0.jar!\org\quartz\impl\jdbcjobstore\tables_mysql_innodb.sql

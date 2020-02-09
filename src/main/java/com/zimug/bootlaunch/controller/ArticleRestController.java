@@ -41,9 +41,8 @@ public class ArticleRestController {
         return AjaxResponse.success(id);
     }
 
-    @PutMapping("/{id}")
-    public AjaxResponse updateArticle(@PathVariable Long id, @Valid @RequestBody ArticleVO article) {
-        article.setId(id);
+    @PutMapping("")
+    public AjaxResponse updateArticle(@Valid @RequestBody ArticleVO article) {
         articleRestService.updateArticle(article);
         return AjaxResponse.success();
     }

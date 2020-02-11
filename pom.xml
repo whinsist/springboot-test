@@ -42,11 +42,6 @@
 			<artifactId>spring-boot-starter-log4j2</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
-
 
 		<!-- 下面是增加的 -->
 		<dependency>
@@ -109,16 +104,16 @@
 			<artifactId>spring-boot-starter-cache</artifactId>
 		</dependency>
 
+		<!--整合thymeleaf-->
 		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>jquery</artifactId>
-			<version>1.12.4</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 
+		<!--整合websocket-->
 		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>webjars-locator</artifactId>
-			<version>0.30</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
 		</dependency>
 
 

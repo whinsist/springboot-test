@@ -6,7 +6,11 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.async.AsyncRequestTimeoutException;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
+
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -43,6 +47,16 @@ public class WebExceptionHandler {
 //        return AjaxResponse.error(new CustomException(CustomExceptionType.USER_INPUT_ERROR,fieldError.getDefaultMessage()));
 //    }
 
+
+    @ExceptionHandler(AsyncRequestTimeoutException.class)
+    @ResponseBody
+    public String handleAsyncRequestTimeoutException(AsyncRequestTimeoutException e) {
+        // SseEmitter emitter = new SseEmitter(60 * 1000L);
+        return SseEmitter.event().data("timeout!!").build().stream()
+                         .map(d -> d.getData().toString())
+                         .collect(Collectors.joining());
+    }
+
     @ExceptionHandler(CustomException.class)
     @ResponseBody
     public AjaxResponse customerException(CustomException e) {
@@ -58,7 +72,7 @@ public class WebExceptionHandler {
     @ResponseBody
     public AjaxResponse exception(Exception e) {
         //TODO 将异常信息持久化处理，方便运维人员处理
-        log.info("全局异常：", e);
+        log.info("全局异常：---------> {}", e.getMessage());
         //没有被程序员发现，并转换为CustomException的异常，都是其他异常或者未知异常.
         return AjaxResponse.error(new CustomException(CustomExceptionType.OTHER_ERROR, "未知异常"));
     }

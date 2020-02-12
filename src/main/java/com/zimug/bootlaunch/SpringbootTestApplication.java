@@ -15,6 +15,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class SpringbootTestApplication {
 
 	public static void main(String[] args) {
+
+		// spring-boot-autoconfigure-2.0.4.RELEASE.jar -> spring.factories
+
+
 		SpringApplication.run(SpringbootTestApplication.class, args);
 	}
 

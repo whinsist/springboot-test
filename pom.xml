@@ -110,6 +110,11 @@
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+
 		<!--整合websocket-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -154,6 +159,8 @@
 					<include>**/*.json</include>
 					<!--整合模版是html时一定要加上-->
 					<include>**/*.html</include>
+					<!--resource的静态文件-->
+					<include>**/*.png</include>
 				</includes>
 			</resource>
 			<resource>

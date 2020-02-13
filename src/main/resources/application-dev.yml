@@ -21,6 +21,11 @@ spring:
     mode: HTML5 # 模版模式
     prefix: classpath:/templates/ # 模版存放路径
     suffix: .html # 模版后缀
+  freemarker:
+    cache: false # 缓存配置 开发阶段应该配置为false 因为经常会改
+    suffix: .html # 模版后缀名 默认为ftl
+    charset: UTF-8 # 文件编码
+    template-loader-path: classpath:/templates/
   quartz:
     job-store-type: jdbc
     jdbc:

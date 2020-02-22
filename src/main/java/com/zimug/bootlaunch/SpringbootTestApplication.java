@@ -10,7 +10,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableAsync
 @EnableScheduling
-@MapperScan(basePackages = {"com.zimug.bootlaunch.generator"})
+//@MapperScan(basePackages = {"com.zimug.bootlaunch.generator"})
 @EnableCaching
 public class SpringbootTestApplication {
 

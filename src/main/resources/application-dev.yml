@@ -7,17 +7,17 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
-  datasource:
-    primary:
-      jdbc-url: jdbc:mysql://192.168.93.132:3306/testdb?useUnicode=true&characterEncoding=utf-8&useSSL=false
-      username: root
-      password: 123456
-      driver-class-name: com.mysql.jdbc.Driver
-    secondary:
-      jdbc-url: jdbc:mysql://192.168.93.132:3306/testdb2?useUnicode=true&characterEncoding=utf-8&useSSL=false
-      username: root
-      password: 123456
-      driver-class-name: com.mysql.jdbc.Driver
+#  datasource:
+#    primary:
+#      jdbc-url: jdbc:mysql://192.168.93.132:3306/testdb?useUnicode=true&characterEncoding=utf-8&useSSL=false
+#      username: root
+#      password: 123456
+#      driver-class-name: com.mysql.jdbc.Driver
+#    secondary:
+#      jdbc-url: jdbc:mysql://192.168.93.132:3306/testdb2?useUnicode=true&characterEncoding=utf-8&useSSL=false
+#      username: root
+#      password: 123456
+#      driver-class-name: com.mysql.jdbc.Driver
   thymeleaf:
     cache: false # 启用缓存:建议生产开启
     check-template-location: true # 检查模版是否存在
@@ -32,11 +32,11 @@ spring:
     suffix: .html # 模版后缀名 默认为ftl
     charset: UTF-8 # 文件编码
     template-loader-path: classpath:/templates/
-  quartz:
-    job-store-type: jdbc
-    jdbc:
-      initialize-schema: never #自动化初始表结构
-      #quartz的数据表在：quartz-2.3.0.jar!\org\quartz\impl\jdbcjobstore\tables_mysql_innodb.sql
+#  quartz:
+#    job-store-type: jdbc
+#    jdbc:
+#      initialize-schema: never #自动化初始表结构
+#      #quartz的数据表在：quartz-2.3.0.jar!\org\quartz\impl\jdbcjobstore\tables_mysql_innodb.sql
   redis:
       database: 0 # Redis 数据库索引（默认为 0）
       host: 192.168.93.132 # Redis 服务器地址
@@ -78,3 +78,28 @@ zimug:
 
 logging:
   config: classpath:log4j2-dev.xml
+
+
+primarydb:
+  uniqueResourceName: primary
+  xaDataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlXADataSource
+  xaProperties:
+    url: jdbc:mysql://192.168.93.132:3306/testdb?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    user: root
+    password: 123456
+  exclusiveConnectionMode: true
+  minPoolSize: 3
+  maxPoolSize: 10
+  testQuery: SELECT 1 from dual #由于采用HikiriCP，用于检测数据库连接是否存活。
+
+secondarydb:
+  uniqueResourceName: secondary
+  xaDataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlXADataSource
+  xaProperties:
+    url: jdbc:mysql://192.168.93.132:3306/testdb2?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    user: root
+    password: 123456
+  exclusiveConnectionMode: true
+  minPoolSize: 3
+  maxPoolSize: 10
+  testQuery: SELECT 1 from dual #由于采用HikiriCP，用于检测数据库连接是否存活。

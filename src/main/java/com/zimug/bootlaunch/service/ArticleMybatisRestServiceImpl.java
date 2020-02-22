@@ -54,7 +54,6 @@ public class ArticleMybatisRestServiceImpl implements ArticleRestService {
         message.setContent("厉害");
         messageMapper.insert(message);
 
-        int x = 12/0;
         //TODO 把readers村到数据库里面
         article.setId(articlePO.getId());
         return article;

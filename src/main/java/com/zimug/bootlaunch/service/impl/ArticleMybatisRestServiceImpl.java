@@ -1,8 +1,9 @@
-package com.zimug.bootlaunch.service;
+package com.zimug.bootlaunch.service.impl;
 
 import com.zimug.bootlaunch.generator.testdb.Article;
 import com.zimug.bootlaunch.generator.testdb.ArticleMapper;
 import com.zimug.bootlaunch.model.ArticleVO;
+import com.zimug.bootlaunch.service.ArticleRestService;
 import com.zimug.bootlaunch.utils.DozerUtils;
 
 import org.dozer.Mapper;

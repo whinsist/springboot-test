@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zimug.bootlaunch.generator.testdb.UserMapper">
+
+    <insert id="insert" parameterType="com.zimug.bootlaunch.model.User" useGeneratedKeys="true" keyProperty="userId" >
+        insert into t_user (user_id, username, userpwd)
+        values (#{userId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{userpwd,jdbcType=VARCHAR})
+    </insert>
+
+    <sql id="Base_Column_List" >
+        user_id, username, userpwd
+    </sql>
+    <resultMap id="BaseResultMap" type="com.zimug.bootlaunch.model.User" >
+        <id column="user_id" property="userId" jdbcType="BIGINT" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="userpwd" property="userpwd" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        select
+        <include refid="Base_Column_List" />
+        from t_user
+        where user_id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectAll" resultType="java.util.LinkedHashMap" parameterType="java.util.Map">
+        select
+        <include refid="Base_Column_List" />
+        from t_user
+    </select>
+
+    <select id="selectList" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select
+        <include refid="Base_Column_List" />
+        from t_user
+    </select>
+
+
+</mapper>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zimug.bootlaunch.generator.testdb.PurchasePlanItemMapper" >
+  <resultMap id="BaseResultMap" type="com.zimug.bootlaunch.model.PurchasePlanItem" >
+    <id column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="userpwd" property="userpwd" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_id, username, userpwd
+  </sql>
+
+
+<!--  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from purchase_plan_item
+    where user_id = #{userId,jdbcType=BIGINT}
+  </select>-->
+
+
+<!--  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from purchase_plan_item
+    where user_id = #{userId,jdbcType=BIGINT}
+  </delete>-->
+
+
+  <!--<insert id="insert" parameterType="com.zimug.bootlaunch.model.PurchasePlanItem" >
+    insert into purchase_plan_item (user_id, username, userpwd
+      )
+    values (#{userId,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{userpwd,jdbcType=VARCHAR}
+      )
+  </insert>-->
+
+  <!--
+  <insert id="insertSelective" parameterType="com.zimug.bootlaunch.model.PurchasePlanItem" >
+    insert into purchase_plan_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="userpwd != null" >
+        userpwd,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwd != null" >
+        #{userpwd,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zimug.bootlaunch.model.PurchasePlanItem" >
+    update purchase_plan_item
+    <set >
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwd != null" >
+        userpwd = #{userpwd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zimug.bootlaunch.model.PurchasePlanItem" >
+    update purchase_plan_item
+    set username = #{username,jdbcType=VARCHAR},
+      userpwd = #{userpwd,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>-->
+
+
+  <select id="cumtomerQuery" resultMap="BaseResultMap" parameterType="com.zimug.bootlaunch.model.PurchasePlanItem" >
+    select
+    <include refid="Base_Column_List" />
+    from purchase_plan_item
+  </select>
+</mapper>

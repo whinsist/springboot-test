@@ -10,8 +10,12 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableAsync
 @EnableScheduling
-@MapperScan(basePackages = {"com.zimug.bootlaunch.generator"})
+//@org.mybatis.spring.annotation.MapperScan(basePackages = {"com.zimug.bootlaunch.generator"})
+//tk.mybatis.mapper.MapperException: 无法获取实体类com.zimug.bootlaunch.model.PurchasePlanItem对应的表名!
+@tk.mybatis.spring.annotation.MapperScan(basePackages = {"com.zimug.bootlaunch.generator"})
 @EnableCaching
+
+
 public class SpringbootTestApplication {
 
 	public static void main(String[] args) {

@@ -41,13 +41,19 @@ java -jar springboot-test-0.0.1-SNAPSHOT.jar  --spring.profiles.active=dev
 ### 6、整合quartz
 
 ```
-1、yml配置quartz
+1、增加配置
+<!--整合quartz-->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-quartz</artifactId>
+</dependency>
+2、yml配置quartz
  spring: 
    quartz:
     job-store-type: jdbc
     jdbc:
       initialize-schema: never #自动化初始表结构
-2、quartz的数据表在：quartz-2.3.0.jar!\org\quartz\impl\jdbcjobstore\tables_mysql_innodb.sql
+3、quartz的数据表在：quartz-2.3.0.jar!\org\quartz\impl\jdbcjobstore\tables_mysql_innodb.sql
 ```
 
 

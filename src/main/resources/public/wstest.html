@@ -14,7 +14,7 @@
 <h3>WebSocket测试，在<span style="color:red">控制台</span>查看测试信息输出！</h3>
 <h4>
     <br>
-    http://localhost:8888/api/ws/sendOne?message=单发消息内容&id=none
+    http://localhost:8888/api/ws/sendOne?message=单发消息内容&id=xxx (id是在第一次链接ws://localhost:8888/ws/asset的时候访问端把SessionID返回给客户端的)
     <br>
     http://localhost:8888/api/ws/sendAll?message=群发消息内容
 </h4>
@@ -24,7 +24,9 @@
 <input id="text" type="text" />
 <button onclick="sendToServer()">发送服务器消息</button>
 <button onclick="closeWebSocket()">关闭连接</button>
-<br>信息:<span id="message"></span>
+<br/>
+<br/>
+<span id="message"></span>
 
 
 <script type="text/javascript">
@@ -65,6 +67,7 @@
     //发送消息给服务器
     function sendToServer(){
         var message = document.getElementById('text').value;
+        document.getElementById('message').innerHTML += ('your: '+message) + '<br/>';
         socket.send(message);
     }
 </script>

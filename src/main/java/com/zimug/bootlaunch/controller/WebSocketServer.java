@@ -74,7 +74,7 @@ public class WebSocketServer {
      */  
     private static void SendMessage(Session session, String message) throws IOException {
 
-        session.getBasicRemote().sendText(String.format("SERVER:  %s (Server，From SessionID=%s)", message, session.getId()));
+        session.getBasicRemote().sendText(String.format("SERVER:  %s (From SessionID=%s)", message, session.getId()));
 
     }  
   

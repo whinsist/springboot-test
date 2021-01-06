@@ -29,19 +29,21 @@ public class ArticleMybatisRestServiceImpl implements ArticleRestService {
     @Resource
     private ArticleMapper articleMapper;
 
+    private static final String LISTKEY = "articleAll";
+
 
     @Override
     @Caching(
             evict = {
                     @CacheEvict(value = "article", key = "#article.getId()"),
-                    @CacheEvict(value = "articleAll",allEntries = true)
+                    @CacheEvict(value = LISTKEY, allEntries = true)
             }
+            // 新增的时候不要缓存 查询的时候缓存    -》》》》》》》》结论：查询的时候放入缓存 其他时候都是失效缓存
     )
     public ArticleVO saveArticle(ArticleVO article) {
         Article articlePO = dozerMapper.map(article, Article.class);
-        articleMapper.insert(articlePO);
+        articleMapper.insertSelective(articlePO);
 
-        //TODO 把readers村到数据库里面
         article.setId(articlePO.getId());
         return article;
     }
@@ -50,7 +52,7 @@ public class ArticleMybatisRestServiceImpl implements ArticleRestService {
     @Caching(
             evict = {
                     @CacheEvict(value = "article", key = "#id"),
-                    @CacheEvict(value = "articleAll",allEntries = true)
+                    @CacheEvict(value = LISTKEY, allEntries = true)
             }
     )
     public void deleteArticle(Long id) {
@@ -60,8 +62,8 @@ public class ArticleMybatisRestServiceImpl implements ArticleRestService {
     @Override
     @Caching(
             evict = {
-                    @CacheEvict(value = "article",key = "#article.getId()"),
-                    @CacheEvict(value = "articleAll",allEntries = true)
+                    @CacheEvict(value = "article", key = "#article.getId()"),
+                    @CacheEvict(value = LISTKEY, allEntries = true)
             }
     )
     public ArticleVO updateArticle(ArticleVO article) {
@@ -77,13 +79,13 @@ public class ArticleMybatisRestServiceImpl implements ArticleRestService {
         if (article == null) {
             return null;
         }
+
         ArticleVO articleVO = dozerMapper.map(article, ArticleVO.class);
-        //TODO 把读者信息查询出来赋值给ArticleVo
         return articleVO;
     }
 
     @Override
-    @Cacheable(value="articleAll")
+    @Cacheable(value = LISTKEY)
     public List<ArticleVO> getAll() {
         List<Article> articles = articleMapper.selectByExample(null);
         return DozerUtils.mapList(articles, ArticleVO.class);

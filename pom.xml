@@ -174,6 +174,25 @@
 		</dependency>
 
 
+		<!-- 引入Actuator监控依赖 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<!-- 引入Actuator api授权用spring-security -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<!-- 注册到actuator的服务端 -->
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-starter-client</artifactId>
+			<!--<version>2.0.0</version>-->
+			<version>2.0.2</version>
+		</dependency>
+
+
 
 	</dependencies>
 

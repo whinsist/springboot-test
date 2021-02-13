@@ -1,20 +1,13 @@
 package com.zimug.bootlaunch.controller;
 
 import com.zimug.bootlaunch.config.exception.AjaxResponse;
-import com.zimug.bootlaunch.model.ArticleVO;
-import com.zimug.bootlaunch.model.PurchasePlanItem;
-import com.zimug.bootlaunch.model.User;
-import com.zimug.bootlaunch.service.ArticleRestService;
 import com.zimug.bootlaunch.service.PurchasePlanItemService;
 import com.zimug.bootlaunch.service.UserService;
+import com.zimug.bootlaunch.service.test.log.TestLogService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import tk.mybatis.mapper.entity.Example;
 
-import javax.annotation.Resource;
-import javax.validation.Valid;
-import java.util.List;
 import java.util.Objects;
 
 
@@ -28,6 +21,9 @@ public class TestController {
 
     @Autowired
     private PurchasePlanItemService purchasePlanItemService;
+
+    @Autowired
+    private TestLogService testLogService;
 
     @GetMapping("/pagehelper")
     public AjaxResponse getAll(Integer pageNum, Integer pageSize) {
@@ -49,10 +45,15 @@ public class TestController {
         if (Objects.isNull(pageSize)) {
             pageSize = 2;
         }
-
         purchasePlanItemService.custom(pageNum, pageSize);
-
-
         return AjaxResponse.success();
     }
+
+    @GetMapping("/testLog")
+    public AjaxResponse testLog(Integer pageNum, Integer pageSize) {
+        log.info("testLog start ...");
+        testLogService.testlogLevel();
+        return AjaxResponse.success();
+    }
+
 }

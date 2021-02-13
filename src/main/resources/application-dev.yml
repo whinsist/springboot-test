@@ -8,7 +8,7 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
   datasource:
-    url: jdbc:mysql://localvm:3306/testdb?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://localvm:3308/testdb?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
@@ -52,19 +52,19 @@ caching:
     article: 10
     articleAll: 20
 rocketmq:
-  name-server: 10.67.7.12:9876 # 自己的RocketMQ-nameserver服务地址
+  name-server: localvm:9876 # 自己的RocketMQ-nameserver服务地址
   producer:
     send-message-timeout: 300000
     group: launch-group
 
 zimug:
   fastdfs:
-    httpserver: http://10.67.7.12:8888/ #这个不是fastdfs属性，但是填上之后，在使用FastDFSClientUtil会得到完整的http文件访问路径
+    httpserver: http://localvm:8888/ #这个不是fastdfs属性，但是填上之后，在使用FastDFSClientUtil会得到完整的http文件访问路径
     connect_timeout: 5
     network_timeout: 30
     charset: UTF-8
     tracker_server: # tracker_server 可以配置成数组
-      - 10.67.7.12:22122
+      - localvm:22122
     max_total: 50
     http_anti_steal_token: false # 如果有防盗链的话，这里true
     http_secret_key: # 有防盗链，这里填secret_key

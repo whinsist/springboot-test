@@ -51,7 +51,10 @@ public class TestController {
 
     @GetMapping("/testLog")
     public AjaxResponse testLog(Integer pageNum, Integer pageSize) {
+        System.out.println("isDebugEnabled=" + log.isDebugEnabled() + " isInfoEnabled=" + log.isInfoEnabled() + " isErrorEnabled=" + log.isErrorEnabled());
         log.info("testLog start ...");
+        log.debug("testLog debug ...");
+
         testLogService.testlogLevel();
         return AjaxResponse.success();
     }

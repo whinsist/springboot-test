@@ -35,7 +35,7 @@ spring:
       database: 0 # Redis 数据库索引（默认为 0）
       host: localvm # Redis 服务器地址
       port: 6379 # Redis 服务器连接端口
-      password: 123456 # Redis 服务器连接密码（默认为空）
+      password:  # Redis 服务器连接密码（默认为空）
       lettuce:
         pool:
           max-active: 8 # 连接池最大连接数（使用负值表示没有限制） 默认 8
@@ -46,6 +46,22 @@ spring:
     type: redis
     redis:
       time-to-live: 600
+  boot:
+    admin:
+      client:
+        url: http://localhost:8081
+        instance:
+          metadata:
+            user.name: ${spring.security.user.name}
+            user.password: ${spring.security.user.password}
+        username: acta
+        password: 111
+  security:
+    user:
+      name: actc
+      password: 111
+      roles:
+        - ACTUATOR_ADMIN
 
 caching:
   ttlmap:
@@ -70,8 +86,8 @@ zimug:
     http_secret_key: # 有防盗链，这里填secret_key
 
 
-logging:
-  config: classpath:log4j2-dev.xml
+#logging:
+#  config: classpath:log4j2-dev.xml #log4j2的日志配置
 
 # PageHelper分页插件
 pagehelper:
@@ -79,3 +95,27 @@ pagehelper:
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
+
+management:
+  endpoint:
+    health:
+      #所有组件的状态都会显示
+      show-details: always
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      #base-path: /monitor
+      exposure:
+        include: '*'
+
+info:
+  app-name: spring-boot-actuator-client
+  description: 监控测试
+#http://localhost:8888/actuator/health
+#http://localhost:8888/actuator/info
+#http://localhost:8888/actuator/beans
+#http://localhost:8888/actuator/env
+#http://localhost:8888/actuator/mappings
+#http://localhost:8888/actuator/metrics
+#关闭应用：http://localhost:8888/actuator/shutdown POST

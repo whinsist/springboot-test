@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zimug.bootlaunch.generator.testdb.GeneInfoPOMapper" >
+  <resultMap id="BaseResultMap" type="com.zimug.bootlaunch.model.GeneInfoPO" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="TINYINT" />
+    <result column="salary" property="salary" jdbcType="DECIMAL" />
+    <result column="submission_date" property="submissionDate" jdbcType="DATE" />
+    <result column="birthday_datetime" property="birthdayDatetime" jdbcType="TIMESTAMP" />
+    <result column="create_timestamp" property="createTimestamp" jdbcType="TIMESTAMP" />
+    <result column="org_sid" property="orgSid" jdbcType="BIGINT" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="created_dt" property="createdDt" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+    <result column="updated_dt" property="updatedDt" jdbcType="TIMESTAMP" />
+    <result column="version" property="version" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, age, salary, submission_date, birthday_datetime, create_timestamp, org_sid,
+    created_by, created_dt, updated_by, updated_dt, version
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from t_gene_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_gene_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.zimug.bootlaunch.model.GeneInfoPO" >
+    insert into t_gene_info (id, name, age,
+      salary, submission_date, birthday_datetime,
+      create_timestamp, org_sid, created_by,
+      created_dt, updated_by, updated_dt,
+      version)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=TINYINT},
+      #{salary,jdbcType=DECIMAL}, #{submissionDate,jdbcType=DATE}, #{birthdayDatetime,jdbcType=TIMESTAMP},
+      #{createTimestamp,jdbcType=TIMESTAMP}, #{orgSid,jdbcType=BIGINT}, #{createdBy,jdbcType=VARCHAR},
+      #{createdDt,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=VARCHAR}, #{updatedDt,jdbcType=TIMESTAMP},
+      #{version,jdbcType=BIGINT})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.zimug.bootlaunch.model.GeneInfoPO" useGeneratedKeys="true" keyProperty="id" >
+    insert into t_gene_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="salary != null" >
+        salary,
+      </if>
+      <if test="submissionDate != null" >
+        submission_date,
+      </if>
+      <if test="birthdayDatetime != null" >
+        birthday_datetime,
+      </if>
+      <if test="createTimestamp != null" >
+        create_timestamp,
+      </if>
+      <if test="orgSid != null" >
+        org_sid,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="createdDt != null" >
+        created_dt,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+      <if test="updatedDt != null" >
+        updated_dt,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=TINYINT},
+      </if>
+      <if test="salary != null" >
+        #{salary,jdbcType=DECIMAL},
+      </if>
+      <if test="submissionDate != null" >
+        #{submissionDate,jdbcType=DATE},
+      </if>
+      <if test="birthdayDatetime != null" >
+        #{birthdayDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTimestamp != null" >
+        #{createTimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orgSid != null" >
+        #{orgSid,jdbcType=BIGINT},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDt != null" >
+        #{createdDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDt != null" >
+        #{updatedDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zimug.bootlaunch.model.GeneInfoPO" >
+    update t_gene_info
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=TINYINT},
+      </if>
+      <if test="salary != null" >
+        salary = #{salary,jdbcType=DECIMAL},
+      </if>
+      <if test="submissionDate != null" >
+        submission_date = #{submissionDate,jdbcType=DATE},
+      </if>
+      <if test="birthdayDatetime != null" >
+        birthday_datetime = #{birthdayDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTimestamp != null" >
+        create_timestamp = #{createTimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orgSid != null" >
+        org_sid = #{orgSid,jdbcType=BIGINT},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDt != null" >
+        created_dt = #{createdDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDt != null" >
+        updated_dt = #{updatedDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zimug.bootlaunch.model.GeneInfoPO" >
+    update t_gene_info
+    set name = #{name,jdbcType=VARCHAR},
+      age = #{age,jdbcType=TINYINT},
+      salary = #{salary,jdbcType=DECIMAL},
+      submission_date = #{submissionDate,jdbcType=DATE},
+      birthday_datetime = #{birthdayDatetime,jdbcType=TIMESTAMP},
+      create_timestamp = #{createTimestamp,jdbcType=TIMESTAMP},
+      org_sid = #{orgSid,jdbcType=BIGINT},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      created_dt = #{createdDt,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=VARCHAR},
+      updated_dt = #{updatedDt,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+
+    <sql id="Example_Where_Clause" >
+        <trim prefix="where" prefixOverrides="and|or" >
+            <if test="condition.id != null" >
+                and id = #{condition.id}
+            </if>
+            <if test="condition.name != null" >
+                and name = #{condition.name}
+            </if>
+        </trim>
+    </sql>
+
+  <select id="selectByParams" resultMap="BaseResultMap" parameterType="com.zimug.bootlaunch.utils.Criteria" >
+    SELECT
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    FROM t_gene_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+    <select id="countByParams" parameterType="com.zimug.bootlaunch.utils.Criteria" resultType="java.lang.Integer" >
+        select count(*) from cloud_physical_host_pool A
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <delete id="deleteByParams" parameterType="com.zimug.bootlaunch.utils.Criteria" >
+        delete A from cloud_physical_host_pool as A
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <update id="updateByParamsSelective" parameterType="map" >
+        update cloud_physical_host_pool A
+        <set >
+            <if test="record.id != null" >
+                id = #{record.id},
+            </if>
+            <if test="record.name != null" >
+                name = #{record.name},
+            </if>
+        </set>
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByParams" parameterType="map" >
+        update cloud_physical_host_pool
+        set id = #{record.id},
+        name = #{record.name},
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </update>
+
+
+
+
+</mapper>

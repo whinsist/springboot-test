@@ -1,6 +1,8 @@
 package com.zimug.bootlaunch.controller;
 
 import com.zimug.bootlaunch.config.exception.AjaxResponse;
+import com.zimug.bootlaunch.generator.testdb.GeneInfoPOMapper;
+import com.zimug.bootlaunch.service.GeneInfoService;
 import com.zimug.bootlaunch.service.PurchasePlanItemService;
 import com.zimug.bootlaunch.service.UserService;
 import com.zimug.bootlaunch.service.test.log.TestLogService;
@@ -24,6 +26,9 @@ public class TestController {
 
     @Autowired
     private TestLogService testLogService;
+
+    @Autowired
+    private GeneInfoService geneInfoService;
 
     @GetMapping("/pagehelper")
     public AjaxResponse getAll(Integer pageNum, Integer pageSize) {
@@ -59,4 +64,10 @@ public class TestController {
         return AjaxResponse.success();
     }
 
+    @GetMapping("/testGene")
+    public AjaxResponse testGene() {
+
+        geneInfoService.testGeneMethod();
+        return AjaxResponse.success();
+    }
 }
